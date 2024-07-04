@@ -1,0 +1,426 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* for scrolling when using navbar */
+html{
+    scroll-behavior: smooth;
+}
+
+
+
+body{
+    background-color: #f4f4f4;
+}
+
+
+
+#navbar{
+    background-color: rgb(105, 90, 205);
+    height: 12vh;
+    border-bottom: 1px rgb(79, 70, 138) solid;
+}
+.nav-content{
+    height: 12vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+    font-size: large;
+}
+/* On Desktop and Mobile */
+.nav-content ul{
+    list-style: none;
+    display: flex;
+}
+.nav-content ul li{
+    font-size: large;
+    font-weight: 400;
+}
+.nav-content ul a{
+    height: 12vh;
+    padding: 0 15px;
+    text-decoration: none;
+    color:white;
+    display: flex;
+    align-items: center;
+}
+.nav-content ul a:hover{
+    background-color: #33333385;
+}
+/* On Mobile */
+.nav-content .menu-bar{
+    display: none;  /* menu-bar shown when width < 780px */
+    padding: 30px;
+}
+.sideBar .icon-large{
+    font-size: x-large;
+}
+.navbar-mobile{    
+    position: fixed;
+    width: 50vw;
+    top: 0;
+    right: 0;
+    z-index: 999;
+
+    display: none; /* display: block when click menu-bar */
+    background-color: #33333399;
+    backdrop-filter: blur(10px); /* creates glassy effect */
+    box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+.navbar-mobile ul{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.navbar-mobile ul li,a{
+    width: 100%;
+    justify-content: center;
+}
+
+
+
+#hero{
+    height: 88vh;
+}
+.hero-content{
+    height: 100%;
+    padding: 30px 20px;
+    gap: 20px;
+    border-bottom: 1px lightgray solid;
+    display: flex;
+    flex-wrap: wrap;  /* when size of screen decrease auto adjust is done by wrap */
+    justify-content: space-evenly;
+    align-items: center;
+}
+.hero-img{
+    width: 300px;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+.hero-img:hover{
+    transform: scale(1.1);
+}
+.hero-title{
+    text-align: left;
+    width: 40vw;
+}
+.hero-title h1:first-child{
+    margin-bottom: 20px;
+}
+#hero span{
+    color: slateblue;
+}
+
+
+
+#about, #skill, #experience, #contact{
+    /* min-height and height:auto is written as it will fit content as screen-size decrease */
+    min-height: 100vh;
+    height: auto; 
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.about-title, .skill-title, .experience-title{
+    text-align: center;
+    font-size: 260%;
+    color: slateblue;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Add text shadow */
+}
+
+
+
+#about{
+    padding: 0 100px;
+    color: black;
+    background-color: lightgrey;
+}
+.about-content{
+    margin: 50px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.about-title{
+    margin-bottom: 50px;
+}
+.about-summary{
+    border-radius: 1pc;
+    line-height: 1.6;
+    background-color: #a3a3a3;
+    padding: 30px 20px;
+    text-align: left;
+    font-size: large;
+    width: 100%;
+}
+.summary-section:nth-child(1), .summary-section:nth-child(2){
+    margin-bottom: 15px;
+}
+.about-summary span{
+    color: white;
+}
+
+
+
+.skill-content{
+    margin: 50px 50px;
+    width: 100%;
+}
+.skill-title{
+    margin-bottom: 65px;
+}
+/* ensures responsive grid layout with columns that automatically adjust to fit the container size. */
+/* limits the width for better responsiveness and appearance. */
+.skills{
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    width: 90vw;   /* 90% of viewport window */
+    margin: 0 auto;
+}
+/* skills -> div: Ensures that each image container centers its content using flexbox. */
+.skill-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.logo{
+    width: 120px;
+    padding: 10px 10px;
+    transition: transform 0.3s ease;
+}
+.logo:hover{
+    transform: scale(1.2);
+}
+/* Showing text when hover over the image */
+.hover-text {
+    margin-top: 10px;
+    color: black;
+    opacity: 0%;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.skill-item:hover .hover-text {
+    opacity: 100%;
+}
+
+
+
+#experience{
+    background-color: lightgray;
+}
+.experience-title{
+    margin: 65px 0;
+}
+.experience-content{
+    width: 75vw;
+    margin-bottom: 40px;
+}
+.exp-container{
+    height: fit-content;
+    width: 100%;
+    background-color: #a3a3a3;
+    border-radius: 1pc;
+    margin-bottom: 50px;
+    padding: 30px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+}
+.exp-bars{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} 
+.exp-bars .lines{
+    height: 100%;
+    border: 1px black solid;
+}
+.company{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.role{
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 1px;
+    font-size: large;
+}
+.duration{
+    display: block;
+    padding: 10px 0;
+    color: whitesmoke;
+    font-size: large;
+}
+.duration span{
+    color: rgb(255, 3, 3);
+}
+.description{
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+
+
+#contact{
+    min-height: 330px;
+    background-color: #333;
+}
+.contact-content{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 85vw;
+    gap: 5px;
+    height: 100%;
+    margin: 40px 0;
+    box-sizing: border-box;
+}
+.contact-left-part, .contact-right-part{
+    width: 48%;
+    height: 100%;
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+    justify-content: start;
+}
+/* Left Part */
+.contact-title{
+    font-size: large;
+    color: #e3e3e3;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Add text shadow */
+}
+.contact-icons img{
+    width: 40px;
+    border: none;
+    transition: width 0.1s ease;
+}
+.contact-icons img:hover{
+    width: 37px;
+}
+.download-cv button{
+    height: 45px;
+    padding: 0 20px;
+    border: none;
+    font-weight: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: yellowgreen;
+    color: #333;
+    border-radius: 1pc;
+}
+.download-cv button:hover{
+    background-color: yellow;
+}
+.copyright{
+    margin-top: 15px;
+    color: #f4f4f4;
+}
+/* Right Part */
+.contact-form input, textarea{
+    border-radius: 10pt;
+    width: 100%;
+    padding: 10px 10px;
+    margin: 10px 0;
+}
+.contact-form textarea{
+    height: 100px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.contact-form input[type="submit"]{
+    border-radius: 0;
+    color: #f4f4f4;
+    background-color: slateblue;
+}
+.contact-form input[type="submit"]:hover{
+    background-color: rgb(145, 136, 203);
+}
+
+
+@media(max-width:826px) {
+    .navbar-desktop .menu-bar{
+        display: flex;
+        margin-right: 0px;
+    }
+    .navbar-desktop .hide-on-mobile{
+        display: none;
+    }
+    .nav-content{
+        padding-right: 0px;
+    }
+    .hero-content{
+        justify-content: center;
+        gap: 50px;
+    }
+    #about, #skill, #experience, #contact {
+        min-height: auto;
+    }
+    .about-title, .skill-title, .experience-title{
+        font-size: 200%;
+    }
+    .hero-title{
+        text-align: center;
+        line-height: 1.3;
+        width: 100%;
+    }
+    .hero-title h1{
+        font-size: 27px;
+    }
+    .hero-content{
+        flex-direction: column;
+    }
+    .hero-img{
+        width: 250px;
+    }
+    .about-summary{
+        width: 80vw;
+        font-size: 16px;
+    }
+    .skills img{
+        width: 100px;
+    }
+    .contact-content{
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    .contact-left-part, .contact-right-part{
+        width: 100%;
+    }
+}
+@media(max-width:468px){
+    .about-title, .skill-title, .experience-title {
+        font-size: 155%;
+    }
+    .about-summary{
+        font-size: 15px;
+        line-height: 1.4;
+    }
+    .experience-content .company{
+        font-size: 20px;
+    }
+    .experience-content .role{
+        font-size: 17px;
+    }
+    .experience-content .duration{
+        font-size: 16px;
+    }
+    .experience-content .description{
+        font-size: 15px;
+        line-height: 1.4;
+    }
+    .skills{
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+}

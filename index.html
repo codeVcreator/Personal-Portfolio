@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- To make responsive media work use this -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <title>Sahil's Portfolio</title>
+</head>
+
+<body>
+    <nav id="navbar">
+        <div class="nav-content">
+            <div class="navbar-title">
+                <h2>Sahil's Portfolio</h2>
+            </div>
+            <div class="navbar-desktop">
+                <ul>
+                    <li><a class="hide-on-mobile" href="#navbar">Home</a></li>
+                    <li><a class="hide-on-mobile" href="#about">About</a></li>
+                    <li><a class="hide-on-mobile" href="#skill">Skills</a></li>
+                    <li><a class="hide-on-mobile" href="#experience">Experience</a></li>
+                    <li><a class="hide-on-mobile" href="#contact">Contact</a></li>
+                    <li>
+                        <a onclick=showSideBar() class="menu-bar">
+                            <i class="fa-solid fa-bars"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar-mobile">
+                <ul class="sideBar">
+                    <li>
+                        <a onclick=hideSideBar() class="x-mark">
+                            <i class="fa-solid fa-xmark icon-large"></i>
+                        </a>
+                    </li>
+                    <li><a onclick=hideSideBar() href="#navbar">Home</a></li>
+                    <li><a onclick=hideSideBar() href="#about">About</a></li>
+                    <li><a onclick=hideSideBar() href="#skill">Skills</a></li>
+                    <li><a onclick=hideSideBar() href="#experience">Experience</a></li>
+                    <li><a onclick=hideSideBar() href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header id="hero">
+        <div class="hero-content">
+            <div class="hero-img-container">
+                <img class="hero-img" src="./images/Sahil_Kumar_photo.jpg" alt="Profile Photo">
+            </div>
+            <div class="hero-title">
+                <h1>Hi, I am Sahil Kumar</h1>
+                <h1>I am a <span class="auto-type"></span></h1>
+            </div>
+        </div>
+    </header>
+
+    <section id="about">
+        <div class="about-content">
+            <div class="about-title">
+                <h1>About Me</h1>
+            </div>
+            <div class="about-summary">
+                <div class="summary-section">
+                    <p>Greetings! I am <span>Sahil Kumar</span>, a final year undergraduate at the prestigious
+                        <span>Malaviya National Institute of Technology (MNIT), Jaipur,</span> Rajasthan, India. </p>
+                    </p>
+                </div>
+                <div class="summary-section">
+                    <p>With a passion for crafting visually stunning and highly functional web applications, I am
+                        dedicated to becoming a professional Frontend Web Developer in the near future. Currently, I am
+                        honing my skills and gaining invaluable experience working with a health-tech <span>startup named
+                            "Shvasa".</span> My commitment to excellence drives me to continuously learn and contribute
+                        my best to the ever-evolving field of web development.</p>
+                </div>
+                <div class="summary-section">
+                    <p>Beyond the realm of technology, I am an avid <span>singer and songwriter.</span> Music has been a
+                        profound part of my life, leading me to perform over 50 gigs and proudly open for the renowned
+                        band "The Lost Fireflies" in 2023. Additionally, my musical journey includes achieving the
+                        second runner-up position in the "Battle of Bands: Blitzschlag 2023" at MNIT Jaipur.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skill">
+        <div class="skill-content">
+            <div class="skill-title">
+                <h1>My Skills</h1>
+            </div>
+            <div class="skills">
+                <div class="skill-item">
+                    <img class="logo" src="./images/C_Logo.png" alt="C">
+                    <div class="hover-text">C Programming</div>
+                </div>
+                <div class="skill-item">
+                    <img class="logo" src="./images/py_logo.png" alt="Python">
+                    <div class="hover-text">Python</div>
+                </div>
+                <div class="skill-item">
+                    <img class="logo" src="./images/dsa_logo.jpg" alt="DSA">
+                    <div class="hover-text">Data Structures & Algorithms</div>
+                </div>
+                <div class="skill-item">
+                    <img class="logo" src="./images/html_logo.png" alt="HTML5">
+                    <div class="hover-text">HTML5</div>
+                </div>
+                <div class="skill-item">
+                    <img class="logo" src="./images/css_loggo.png" alt="CSS3">
+                    <div class="hover-text">CSS3</div>
+                </div>
+                <div class="skill-item">
+                    <img class="logo" src="./images/js_logo.png" alt="JavaScript">
+                    <div class="hover-text">JavaScript</div>
+                </div>
+                <div class="skill-item">
+                    <img class="logo" src="./images/react_logo.png" alt="React">
+                    <div class="hover-text">React</div>
+                </div>
+                <div class="skill-item">
+                    <img class="logo" src="./images/sql_logo.png" alt="SQL">
+                    <div class="hover-text">SQL</div>
+                </div>
+                <div class="skill-item">
+                    <img class="logo" src="./images/vs-code_logo.png" alt="VS-Code">
+                    <div class="hover-text">VS-Code</div>
+                </div>
+                <div class="skill-item">
+                    <img class="logo" src="./images/windows_logo.png" alt="Windows">
+                    <div class="hover-text">Windows</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="experience-title">
+            <h1>My Experiences</h1>
+        </div>
+        <div class="experience-content">
+
+            <div class="exp-container">
+                <div class="exp-bars">
+                    <div class="dots">
+                        <i class="fa-solid fa-circle"></i>
+                    </div>
+                    <div class="lines"></div>
+                </div>
+                <div class="exp-content">
+                    <h2 class="company">Shvasa</h2>
+                    <small class="role">Software Enginner Intern</small>
+                    <small class="duration">June - July 2024</small>
+                    <p class="description">Software Engineering Intern tasked with creating interactive and responsive
+                        "Yoga Recommendation" tool based on person's day to day life and goals.</p>
+                </div>
+            </div>
+
+            <div class="exp-container">
+                <div class="exp-bars">
+                    <div class="dots">
+                        <i class="fa-solid fa-circle"></i>
+                    </div>
+                    <div class="lines"></div>
+                </div>
+                <div class="exp-content">
+                    <h2 class="company">Music Society, NIT Jaipur</h2>
+                    <small class="role">Joint Secretary</small>
+                    <small class="duration">Jan 2024 - Present <span>*</span></small>
+                    <p class="description">As the Joint Secretary of the MNIT Music Society, I coordinated events,
+                        managed communications, and fostered a vibrant community of musicians, enhancing the musical
+                        culture on campus.</p>
+                </div>
+            </div>
+
+            <div class="exp-container">
+                <div class="exp-bars">
+                    <div class="dots">
+                        <i class="fa-solid fa-circle"></i>
+                    </div>
+                    <div class="lines"></div>
+                </div>
+                <div class="exp-content">
+                    <h2 class="company">Music Society, NIT Jaipur</h2>
+                    <small class="role">Executive</small>
+                    <small class="duration">Oct - Dec 2023</small>
+                    <p class="description">As an Executive of the MNIT Music Society, I spearheaded event planning,
+                        facilitated member engagement, and played a key role in enhancing the society's presence and
+                        impact within the campus community.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="contact-content">
+
+            <div class="contact-left-part">
+                <div class="contact-title">
+                    <h1>Contact Me</h1>
+                </div>
+                <div class="contact-icons">
+                    <a class="instagram" href="https://www.instagram.com/insane_yea/" target="_blank">
+                        <img src="./images/instagram_logo.png" alt="instagram">
+                    </a>
+                    <a class="linkedin" href="https://www.linkedin.com/in/sahilcodeversecreator/" target="_blank">
+                        <img src="./images/linkedin_logo.png" alt="linkedin">
+                    </a>
+                    <a class="github" href="https://github.com/codeVcreator/" target="_blank">
+                        <img src="./images/github_logo.png" alt="github">
+                    </a>
+                    <a class="email" href="mailto:sahilkumar7325@gmail.com" target="_blank">
+                        <img src="./images/email_logo.png" alt="email">
+                    </a>
+                </div>
+                <div class="download-cv">
+                    <a href="./Sahil_Kumar_resume.pdf" download="Sahil_Kumar_Resume.pdf">
+                        <button class="download">Download CV</button>
+                    </a>
+                </div>
+                <div class="copyright">
+                    <p>Copyright &copy; 2024 - All Rights reserved to Sahil Kumar</p>
+                </div>
+            </div>
+
+            <div class="contact-right-part">
+                <form class="contact-form">
+                    <input type="text" name="name" id="name" placeholder="Enter your name">
+                    <input type="email" name="email" id="email" placeholder="Enter your email address">
+                    <textarea name="message" id="message" placeholder="Enter your message here"></textarea>
+                    <input type="submit" name="submit" id="submit">
+                </form>
+            </div>
+
+        </div>
+
+    </footer>
+
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+        var typed = new Typed(".auto-type",{
+            strings : ["Programmer!", "Web Designer!", "Frontend Web Developer!"],
+            typeSpeed : 40,
+            backSpeed : 40,
+            loop : 150
+        })
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>
