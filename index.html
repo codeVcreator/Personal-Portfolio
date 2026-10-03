@@ -1,254 +1,420 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <!-- To make responsive media work use this -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sahil Kumar — Full-Stack Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F8FAFC;
+  --bg-card:#FFFFFF;
+  --bg-subtle:#F1F5F9;
+  --accent:#4F46E5;
+  --accent-light:#EEF2FF;
+  --accent-mid:#818CF8;
+  --metric:#059669;
+  --metric-bg:#ECFDF5;
+  --text:#0F172A;
+  --text-muted:#64748B;
+  --border:#E2E8F0;
+  --font:'Plus Jakarta Sans',system-ui,sans-serif;
+  --radius:12px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
 
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    <title>Sahil's Portfolio</title>
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(248,250,252,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 5vw}
+.nav-inner{max-width:1100px;margin:0 auto;height:56px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-weight:700;font-size:1rem;color:var(--text);text-decoration:none}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links a{font-size:.875rem;font-weight:500;color:var(--text-muted);text-decoration:none;transition:color .15s}
+.nav-links a:hover{color:var(--accent)}
+
+/* HERO */
+.hero{max-width:1100px;margin:0 auto;padding:80px 5vw 64px}
+.hero-tag{display:inline-flex;align-items:center;gap:.5rem;background:var(--accent-light);color:var(--accent);font-size:.8rem;font-weight:600;padding:.3rem .75rem;border-radius:100px;margin-bottom:1.5rem}
+.hero-tag::before{content:'';width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+h1{font-size:clamp(2.4rem,5vw,3.8rem);font-weight:800;line-height:1.1;letter-spacing:-.03em;margin-bottom:1rem}
+h1 em{font-style:normal;color:var(--accent)}
+.hero-sub{font-size:1.1rem;color:var(--text-muted);max-width:560px;margin-bottom:2.5rem;line-height:1.7}
+.hero-stats{display:flex;gap:2.5rem;flex-wrap:wrap;margin-bottom:2.5rem;padding:1.5rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.stat-item{display:flex;flex-direction:column;gap:.2rem}
+.stat-num{font-size:1.6rem;font-weight:800;color:var(--accent);letter-spacing:-.03em}
+.stat-label{font-size:.78rem;color:var(--text-muted);font-weight:500}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.65rem 1.25rem;border-radius:8px;font-size:.875rem;font-weight:600;text-decoration:none;transition:all .15s;font-family:var(--font)}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:#4338CA}
+.btn-ghost{background:transparent;color:var(--text);border:1.5px solid var(--border)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+/* SECTION */
+section{padding:72px 5vw}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-label{font-size:.75rem;font-weight:700;letter-spacing:.08em;color:var(--accent);text-transform:uppercase;margin-bottom:.75rem}
+.section-title{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;letter-spacing:-.02em;margin-bottom:1rem}
+.section-sub{color:var(--text-muted);max-width:520px;margin-bottom:3rem}
+
+/* ABOUT */
+#about{background:var(--bg-subtle)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.about-text p{color:var(--text-muted);line-height:1.8;margin-bottom:1rem;font-size:.95rem}
+.about-text p strong{color:var(--text);font-weight:600}
+.about-cards{display:flex;flex-direction:column;gap:1rem}
+.about-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem}
+.about-card-num{font-size:1.5rem;font-weight:800;color:var(--accent);letter-spacing:-.03em}
+.about-card-label{font-size:.8rem;color:var(--text-muted);margin-top:.2rem}
+
+/* WORK */
+.work-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.25rem}
+.work-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;display:flex;flex-direction:column;gap:1rem;transition:border-color .15s,box-shadow .15s}
+.work-card:hover{border-color:var(--accent-mid);box-shadow:0 4px 24px rgba(79,70,229,.08)}
+.work-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem}
+.work-icon{width:40px;height:40px;border-radius:10px;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.work-impact{display:inline-flex;align-items:center;background:var(--metric-bg);color:var(--metric);font-size:.75rem;font-weight:700;padding:.25rem .6rem;border-radius:100px;white-space:nowrap}
+.work-name{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:.35rem}
+.work-desc{font-size:.85rem;color:var(--text-muted);line-height:1.6}
+.work-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:auto}
+.tag{font-size:.7rem;font-weight:600;color:var(--accent);background:var(--accent-light);padding:.2rem .5rem;border-radius:4px}
+
+/* STACK */
+#stack{background:var(--bg-subtle)}
+.stack-groups{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.5rem}
+.stack-group{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem}
+.stack-group-label{font-size:.7rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.75rem}
+.stack-chips{display:flex;flex-wrap:wrap;gap:.4rem}
+.chip{font-size:.78rem;font-weight:500;color:var(--text);background:var(--bg-subtle);border:1px solid var(--border);padding:.25rem .6rem;border-radius:6px}
+.chip.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.contact-text p{color:var(--text-muted);line-height:1.8;margin-bottom:1.5rem}
+.contact-links{display:flex;flex-direction:column;gap:.75rem}
+.contact-link{display:flex;align-items:center;gap:1rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;text-decoration:none;color:var(--text);transition:border-color .15s}
+.contact-link:hover{border-color:var(--accent)}
+.contact-link-icon{width:36px;height:36px;border-radius:8px;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.contact-link-text{display:flex;flex-direction:column}
+.contact-link-label{font-size:.7rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em}
+.contact-link-value{font-size:.88rem;font-weight:600;color:var(--text)}
+
+/* FOOTER */
+footer{background:var(--text);color:rgba(255,255,255,.5);text-align:center;padding:1.5rem 5vw;font-size:.8rem}
+footer strong{color:rgba(255,255,255,.8)}
+
+/* MOBILE */
+@media(max-width:700px){
+  .about-grid,.contact-grid{grid-template-columns:1fr}
+  .hero-stats{gap:1.5rem}
+  .nav-links{display:none}
+}
+</style>
 </head>
-
 <body>
-    <nav id="navbar">
-        <div class="nav-content">
-            <div class="navbar-title">
-                <h2>Sahil's Portfolio</h2>
-            </div>
-            <div class="navbar-desktop">
-                <ul>
-                    <li><a class="hide-on-mobile" href="#navbar">Home</a></li>
-                    <li><a class="hide-on-mobile" href="#about">About</a></li>
-                    <li><a class="hide-on-mobile" href="#skill">Skills</a></li>
-                    <li><a class="hide-on-mobile" href="#experience">Experience</a></li>
-                    <li><a class="hide-on-mobile" href="#contact">Contact</a></li>
-                    <li>
-                        <a onclick=showSideBar() class="menu-bar">
-                            <i class="fa-solid fa-bars"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="navbar-mobile">
-                <ul class="sideBar">
-                    <li>
-                        <a onclick=hideSideBar() class="x-mark">
-                            <i class="fa-solid fa-xmark icon-large"></i>
-                        </a>
-                    </li>
-                    <li><a onclick=hideSideBar() href="#navbar">Home</a></li>
-                    <li><a onclick=hideSideBar() href="#about">About</a></li>
-                    <li><a onclick=hideSideBar() href="#skill">Skills</a></li>
-                    <li><a onclick=hideSideBar() href="#experience">Experience</a></li>
-                    <li><a onclick=hideSideBar() href="#contact">Contact</a></li>
-                </ul>
-            </div>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">SK<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#stack">Stack</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">Available for SDE roles</div>
+  <h1>Sahil Kumar<br><em>Full-Stack Developer</em></h1>
+  <p class="hero-sub">
+    Almost 2 years shipping production features at Shvasa — a US-based yoga platform.
+    Non-CS grad from NIT Jaipur who learned by building real things for real users.
+  </p>
+  <div class="hero-stats">
+    <div class="stat-item"><span class="stat-num">200K+</span><span class="stat-label">API requests/day</span></div>
+    <div class="stat-item"><span class="stat-num">80%</span><span class="stat-label">users shared Year Wrap</span></div>
+    <div class="stat-item"><span class="stat-num">5+</span><span class="stat-label">pages ranked #1 Google</span></div>
+    <div class="stat-item"><span class="stat-num">30%</span><span class="stat-label">session time increase</span></div>
+  </div>
+  <div class="hero-ctas">
+    <a class="btn btn-primary" href="mailto:sahilkumar7325@gmail.com">Get in touch</a>
+    <a class="btn btn-ghost" href="https://raw.githubusercontent.com/codeVcreator/Personal-Portfolio/master/Sahil_Kumar_resume.pdf" target="_blank" download="Sahil_Kumar_Resume.pdf">Download Resume</a>
+    <a class="btn btn-ghost" href="https://github.com/codeVcreator/" target="_blank">GitHub</a>
+    <a class="btn btn-ghost" href="http://linkedin.com/in/sahilcodeversecreator/" target="_blank">LinkedIn</a>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-label">About</div>
+        <h2 class="section-title">Non-CS grad.<br>Production engineer.</h2>
+        <p>I studied Metallurgical Engineering at NIT Jaipur and started building software on the side. Six months after graduating, I was writing production code, reviewing PRs, and owning features end to end.</p>
+        <p>At Shvasa I've worked across <strong>Flutter, React, Node.js, and MongoDB</strong> — often shipping the same feature on mobile and web simultaneously. I've integrated AI (Gemini), built SEO systems that moved rankings, and automated workflows that the ops team uses daily.</p>
+        <p>I build with <strong>Claude Code and GitHub Copilot</strong> as part of my everyday workflow. Fast learner, accountable for outcomes, not just code.</p>
+      </div>
+      <div class="about-cards">
+        <div class="about-card">
+          <div class="about-card-num">Dec 2024 – Present</div>
+          <div class="about-card-label">Full-Stack Developer · Shvasa · Remote (US)</div>
         </div>
-    </nav>
-
-    <header id="hero">
-        <div class="hero-content">
-            <div class="hero-img-container">
-                <img class="hero-img" src="./images/Sahil_Kumar_photo.jpg" alt="Profile Photo">
-            </div>
-            <div class="hero-title">
-                <h1>Hi, I am Sahil Kumar</h1>
-                <h1>I am a <span class="auto-type"></span></h1>
-            </div>
+        <div class="about-card">
+          <div class="about-card-num">NIT Jaipur · 2025</div>
+          <div class="about-card-label">B.Tech, Metallurgical &amp; Materials Science Engineering</div>
         </div>
-    </header>
-
-    <section id="about">
-        <div class="about-content">
-            <div class="about-title">
-                <h1>About Me</h1>
-            </div>
-            <div class="about-summary">
-                <div class="summary-section">
-                    <p>Greetings! I am <span>Sahil Kumar</span>, a final year undergraduate at the prestigious
-                        <span>Malaviya National Institute of Technology (MNIT), Jaipur,</span> Rajasthan, India. </p>
-                    </p>
-                </div>
-                <div class="summary-section">
-                    <p>With a passion for crafting visually stunning and highly functional web applications, I am
-                        dedicated to becoming a professional Frontend Web Developer in the near future. Currently, I am
-                        honing my skills and gaining invaluable experience working with a health-tech <span>startup named
-                            "Shvasa".</span> My commitment to excellence drives me to continuously learn and contribute
-                        my best to the ever-evolving field of web development.</p>
-                </div>
-                <div class="summary-section">
-                    <p>Beyond the realm of technology, I am an avid <span>singer and songwriter.</span> Music has been a
-                        profound part of my life, leading me to perform over 50 gigs and proudly open for the renowned
-                        band "The Lost Fireflies" in 2023. Additionally, my musical journey includes achieving the
-                        second runner-up position in the "Battle of Bands: Blitzschlag 2023" at MNIT Jaipur.</p>
-                </div>
-            </div>
+        <div class="about-card">
+          <div class="about-card-num">8+ features</div>
+          <div class="about-card-label">shipped end-to-end across mobile, web &amp; backend</div>
         </div>
-    </section>
-
-    <section id="skill">
-        <div class="skill-content">
-            <div class="skill-title">
-                <h1>My Skills</h1>
-            </div>
-            <div class="skills">
-                <div class="skill-item">
-                    <img class="logo" src="./images/c_logo_96.png" alt="C">
-                    <div class="hover-text">C Programming</div>
-                </div>
-                <div class="skill-item">
-                    <img class="logo" src="./images/py_logo.png" alt="Python">
-                    <div class="hover-text">Python</div>
-                </div>
-                <div class="skill-item">
-                    <img class="logo" src="./images/dsa_logo.jpg" alt="DSA">
-                    <div class="hover-text">Data Structures & Algorithms</div>
-                </div>
-                <div class="skill-item">
-                    <img class="logo" src="./images/html_logo.png" alt="HTML5">
-                    <div class="hover-text">HTML5</div>
-                </div>
-                <div class="skill-item">
-                    <img class="logo" src="./images/css_loggo.png" alt="CSS3">
-                    <div class="hover-text">CSS3</div>
-                </div>
-                <div class="skill-item">
-                    <img class="logo" src="./images/js_logo.png" alt="JavaScript">
-                    <div class="hover-text">JavaScript</div>
-                </div>
-                <div class="skill-item">
-                    <img class="logo" src="./images/react_logo.png" alt="React">
-                    <div class="hover-text">React</div>
-                </div>
-                <div class="skill-item">
-                    <img class="logo" src="./images/sql_logo.png" alt="SQL">
-                    <div class="hover-text">SQL</div>
-                </div>
-                <div class="skill-item">
-                    <img class="logo" src="./images/vs-code_logo.png" alt="VS-Code">
-                    <div class="hover-text">VS-Code</div>
-                </div>
-                <div class="skill-item">
-                    <img class="logo" src="./images/windows_logo.png" alt="Windows">
-                    <div class="hover-text">Windows</div>
-                </div>
-            </div>
+        <div class="about-card">
+          <div class="about-card-num">React · Flutter · Node</div>
+          <div class="about-card-label">primary stack, with MongoDB, Redis, RabbitMQ, AWS S3</div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section id="experience">
-        <div class="experience-title">
-            <h1>My Experiences</h1>
+<!-- WORK -->
+<section id="work">
+  <div class="section-inner">
+    <div class="section-label">Work at Shvasa</div>
+    <h2 class="section-title">Features shipped</h2>
+    <p class="section-sub">Every feature below went to production and was used by real users daily across mobile and web.</p>
+    <div class="work-grid">
+
+      <div class="work-card">
+        <div class="work-card-top">
+          <div>
+            <div class="work-icon">🏆</div>
+          </div>
+          <span class="work-impact">Session time +30% · Retention +10%</span>
         </div>
-        <div class="experience-content">
-
-            <div class="exp-container">
-                <div class="exp-bars">
-                    <div class="dots">
-                        <i class="fa-solid fa-circle"></i>
-                    </div>
-                    <div class="lines"></div>
-                </div>
-                <div class="exp-content">
-                    <h2 class="company">Shvasa</h2>
-                    <small class="role">Software Enginner Intern</small>
-                    <small class="duration">June - July 2024</small>
-                    <p class="description">Software Engineering Intern tasked with creating interactive and responsive
-                        "Yoga Recommendation" tool based on person's day to day life and goals.</p>
-                </div>
-            </div>
-
-            <div class="exp-container">
-                <div class="exp-bars">
-                    <div class="dots">
-                        <i class="fa-solid fa-circle"></i>
-                    </div>
-                    <div class="lines"></div>
-                </div>
-                <div class="exp-content">
-                    <h2 class="company">Music Society, NIT Jaipur</h2>
-                    <small class="role">Joint Secretary</small>
-                    <small class="duration">Jan 2024 - Present <span>*</span></small>
-                    <p class="description">As the Joint Secretary of the MNIT Music Society, I coordinated events,
-                        managed communications, and fostered a vibrant community of musicians, enhancing the musical
-                        culture on campus.</p>
-                </div>
-            </div>
-
-            <div class="exp-container">
-                <div class="exp-bars">
-                    <div class="dots">
-                        <i class="fa-solid fa-circle"></i>
-                    </div>
-                    <div class="lines"></div>
-                </div>
-                <div class="exp-content">
-                    <h2 class="company">Music Society, NIT Jaipur</h2>
-                    <small class="role">Executive</small>
-                    <small class="duration">Oct - Dec 2023</small>
-                    <p class="description">As an Executive of the MNIT Music Society, I spearheaded event planning,
-                        facilitated member engagement, and played a key role in enhancing the society's presence and
-                        impact within the campus community.</p>
-                </div>
-            </div>
+        <div>
+          <div class="work-name">Sports Month</div>
+          <div class="work-desc">Gamified inter-house competition platform with 6+ activity types, leaderboards, wildcard power-ups via spin-the-wheel, Rocket.Chat group chats, and a Stream.io batch-nudge system for captains. Users started connecting on Instagram and LinkedIn outside the platform.</div>
         </div>
-    </section>
-
-    <footer id="contact">
-        <div class="contact-content">
-
-            <div class="contact-left-part">
-                <div class="contact-title">
-                    <h1>Contact Me</h1>
-                </div>
-                <div class="contact-icons">
-                    <a class="instagram" href="https://www.instagram.com/insane_yea/" target="_blank">
-                        <img src="./images/instagram_logo.png" alt="instagram">
-                    </a>
-                    <a class="linkedin" href="https://www.linkedin.com/in/sahilcodeversecreator/" target="_blank">
-                        <img src="./images/linkedin_logo.png" alt="linkedin">
-                    </a>
-                    <a class="github" href="https://github.com/codeVcreator/" target="_blank">
-                        <img src="./images/github_logo.png" alt="github">
-                    </a>
-                    <a class="email" href="mailto:sahilkumar7325@gmail.com" target="_blank">
-                        <img src="./images/email_logo.png" alt="email">
-                    </a>
-                </div>
-                <div class="download-cv">
-                    <a href="./SAHIL_KUMAR_2021umt1801.pdf" download="Sahil_Kumar_Resume.pdf">
-                        <button class="download">Download CV</button>
-                    </a>
-                </div>
-                <div class="copyright">
-                    <p>Copyright &copy; 2024 - All Rights reserved to Sahil Kumar</p>
-                </div>
-            </div>
-
-            <div class="contact-right-part">
-                <form class="contact-form">
-                    <input type="text" name="name" id="name" placeholder="Enter your name">
-                    <input type="email" name="email" id="email" placeholder="Enter your email address">
-                    <textarea name="message" id="message" placeholder="Enter your message here"></textarea>
-                    <input type="submit" name="submit" id="submit">
-                </form>
-            </div>
-
+        <div class="work-tags">
+          <span class="tag">Flutter</span><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">Stream.io</span><span class="tag">MongoDB</span>
         </div>
+      </div>
 
-    </footer>
+      <div class="work-card">
+        <div class="work-card-top">
+          <div>
+            <div class="work-icon">🎬</div>
+          </div>
+          <span class="work-impact">80% users downloaded &amp; shared</span>
+        </div>
+        <div>
+          <div class="work-name">Year Wrap</div>
+          <div class="work-desc">Spotify Wrapped-style annual review with 10+ personalised stats per user — classes, streak, leaderboard rank, fitness age, calories. Batch MongoDB data-mining pipelines pre-computed results and generated one downloadable video per user. Drove significant word-of-mouth growth.</div>
+        </div>
+        <div class="work-tags">
+          <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">MongoDB</span><span class="tag">Batch Pipelines</span>
+        </div>
+      </div>
 
-    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-    <script>
-        var typed = new Typed(".auto-type",{
-            strings : ["Programmer!", "Web Designer!", "Frontend Web Developer!"],
-            typeSpeed : 40,
-            backSpeed : 40,
-            loop : 150
-        })
-    </script>
-    <script src="script.js"></script>
+      <div class="work-card">
+        <div class="work-card-top">
+          <div>
+            <div class="work-icon">🧠</div>
+          </div>
+          <span class="work-impact">Strong user adoption</span>
+        </div>
+        <div>
+          <div class="work-name">AI Journal Counsellor</div>
+          <div class="work-desc">Gemini Flash 2.5 mental-wellness counsellor integrated into a journal feature. Reads user entries and responds with personalised guidance. Per-session prompt engineering with a 5-chat-per-entry limit for token cost control.</div>
+        </div>
+        <div class="work-tags">
+          <span class="tag">Flutter</span><span class="tag">Gemini Flash 2.5</span><span class="tag">Node.js</span><span class="tag">Prompt Engineering</span>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-card-top">
+          <div>
+            <div class="work-icon">✨</div>
+          </div>
+          <span class="work-impact">Instagram tagging +10%</span>
+        </div>
+        <div>
+          <div class="work-name">AI Pose Reimagination</div>
+          <div class="work-desc">Collage builder for AI-recognised pose images, exportable as shareable cards. AI regenerates poses with background removed and festival-specific styling (8+ event prompts — Diwali, Holi, New Year). In-app story feed with reactions, comments, and deletion via Stream.io.</div>
+        </div>
+        <div class="work-tags">
+          <span class="tag">React</span><span class="tag">Gemini API</span><span class="tag">AWS S3</span><span class="tag">Stream.io</span>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-card-top">
+          <div>
+            <div class="work-icon">🔍</div>
+          </div>
+          <span class="work-impact">API calls reduced 80%</span>
+        </div>
+        <div>
+          <div class="work-name">Global Search</div>
+          <div class="work-desc">Full-text cross-category search (Classes, Teachers, Students, Posts) using MongoDB Atlas Search — Elasticsearch-equivalent with fuzzy matching and compound indexing. Facet aggregation cuts DB queries by 50%. 500ms debounce. Shipped on React and Flutter simultaneously.</div>
+        </div>
+        <div class="work-tags">
+          <span class="tag">React</span><span class="tag">Flutter</span><span class="tag">MongoDB Atlas Search</span>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-card-top">
+          <div>
+            <div class="work-icon">📈</div>
+          </div>
+          <span class="work-impact">CTR 6% → 15% · 5 pages #1 Google</span>
+        </div>
+        <div>
+          <div class="work-name">Web, SEO &amp; Growth</div>
+          <div class="work-desc">Managed 150+ Webflow pages and 450+ blogs. SEO/AEO strategy ranked 5+ pages to #1 on Google (US &amp; IN) and secured top-5 Google AI placements. Lifted scroll depth +15%, conversion +2%, cut bandwidth costs 50%. Built Stripe + Cashfree direct-checkout for 4 micro-product landing pages.</div>
+        </div>
+        <div class="work-tags">
+          <span class="tag">Webflow</span><span class="tag">SEO/AEO</span><span class="tag">Stripe</span><span class="tag">Cashfree</span><span class="tag">Integrately</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section id="stack">
+  <div class="section-inner">
+    <div class="section-label">Stack</div>
+    <h2 class="section-title">What I build with</h2>
+    <p class="section-sub">Production-tested across 2 years at Shvasa.</p>
+    <div class="stack-groups">
+      <div class="stack-group">
+        <div class="stack-group-label">Frontend</div>
+        <div class="stack-chips">
+          <span class="chip primary">React</span>
+          <span class="chip primary">Flutter</span>
+          <span class="chip">Redux</span>
+          <span class="chip">React Query</span>
+          <span class="chip">Tailwind CSS</span>
+          <span class="chip">Material UI</span>
+          <span class="chip">Webflow</span>
+        </div>
+      </div>
+      <div class="stack-group">
+        <div class="stack-group-label">Backend</div>
+        <div class="stack-chips">
+          <span class="chip primary">Node.js</span>
+          <span class="chip primary">Express.js</span>
+          <span class="chip">REST APIs</span>
+          <span class="chip">Redis</span>
+          <span class="chip">RabbitMQ</span>
+          <span class="chip">CRON</span>
+        </div>
+      </div>
+      <div class="stack-group">
+        <div class="stack-group-label">Database &amp; Search</div>
+        <div class="stack-chips">
+          <span class="chip primary">MongoDB</span>
+          <span class="chip">Atlas Search</span>
+          <span class="chip">Aggregation Pipelines</span>
+          <span class="chip">SQL</span>
+        </div>
+      </div>
+      <div class="stack-group">
+        <div class="stack-group-label">AI &amp; Services</div>
+        <div class="stack-chips">
+          <span class="chip primary">Gemini API</span>
+          <span class="chip">Claude Code</span>
+          <span class="chip">AWS S3</span>
+          <span class="chip">Stream.io</span>
+          <span class="chip">Stripe</span>
+          <span class="chip">Cashfree</span>
+        </div>
+      </div>
+      <div class="stack-group">
+        <div class="stack-group-label">Languages</div>
+        <div class="stack-chips">
+          <span class="chip primary">JavaScript</span>
+          <span class="chip primary">TypeScript</span>
+          <span class="chip primary">Dart</span>
+          <span class="chip">Python</span>
+          <span class="chip">HTML/CSS</span>
+        </div>
+      </div>
+      <div class="stack-group">
+        <div class="stack-group-label">Tools</div>
+        <div class="stack-chips">
+          <span class="chip">Git/GitHub</span>
+          <span class="chip">Figma</span>
+          <span class="chip">Postman</span>
+          <span class="chip">Xcode</span>
+          <span class="chip">Fastlane</span>
+          <span class="chip">Vercel</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div>
+        <div class="section-label">Contact</div>
+        <h2 class="section-title">Let's talk</h2>
+        <p class="contact-text"><p>Open to full-stack SDE roles at product-focused startups and growth-stage companies. I move fast, own outcomes, and ship.</p></p>
+      </div>
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:sahilkumar7325@gmail.com">
+          <div class="contact-link-icon">✉️</div>
+          <div class="contact-link-text">
+            <span class="contact-link-label">Email</span>
+            <span class="contact-link-value">sahilkumar7325@gmail.com</span>
+          </div>
+        </a>
+        <a class="contact-link" href="http://linkedin.com/in/sahilcodeversecreator/" target="_blank">
+          <div class="contact-link-icon">💼</div>
+          <div class="contact-link-text">
+            <span class="contact-link-label">LinkedIn</span>
+            <span class="contact-link-value">sahilcodeversecreator</span>
+          </div>
+        </a>
+        <a class="contact-link" href="https://github.com/codeVcreator/" target="_blank">
+          <div class="contact-link-icon">⌨️</div>
+          <div class="contact-link-text">
+            <span class="contact-link-label">GitHub</span>
+            <span class="contact-link-value">codeVcreator</span>
+          </div>
+        </a>
+        <a class="contact-link" href="tel:+918825106026">
+          <div class="contact-link-icon">📞</div>
+          <div class="contact-link-text">
+            <span class="contact-link-label">Phone</span>
+            <span class="contact-link-value">+91-8825106026</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Built by <strong>Sahil Kumar</strong> · sahilkumar7325@gmail.com
+</footer>
+
 </body>
-
 </html>
